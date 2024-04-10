@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:perfil/entity/user/controller/cadastroController.dart';
+import 'package:perfil/entity/user/database/UserDataBase.dart';
 import 'package:perfil/entity/user/model/UserModel.dart';
 import 'package:perfil/ui/pages/Cadastro.dart';
 import 'package:perfil/ui/pages/homePage.dart';
@@ -66,6 +67,7 @@ class _LoginState extends State<Login> {
                       Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) =>  HomePage(name: nomeController.text, email: emailController.text, ))
                     );
+                    print(UserDataBase.users);
                 },
                 child: const Text('Login  '),
               ),

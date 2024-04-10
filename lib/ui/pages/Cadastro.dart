@@ -135,12 +135,14 @@ class _LoginState extends State<Cadastro> {
                   );
                 } else {
                   if (EmailValidator.validate(emailController.text)) {
+                    String imagem;
+                    _imageUrl == null? imagem = 'assets/perfilFoto.jpg' : imagem = _imageUrl!;
                     UserModel userModel = UserModel(
                       name: nomeController.text,
                       password: senhaController.text,
                       email: emailController.text,
                       dataNascimento: dataNascimentoController.text,
-                      image: _selectImage
+                      image: imagem
                     );
                     CadastroController.addUser(userModel);
 
@@ -185,9 +187,7 @@ class _LoginState extends State<Cadastro> {
           ),
 
 
-
-
-
+          
           MaterialButton(
             color: Colors.black,
             child: const Text(

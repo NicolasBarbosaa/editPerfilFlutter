@@ -1,11 +1,11 @@
-import 'dart:io';
+
 
 class UserModel{
   String name;
   String password;
   String  email;
   String dataNascimento;
-  File? image;
+  String? image;
 
   UserModel({
     required this.name,
@@ -14,4 +14,9 @@ class UserModel{
     required this.dataNascimento,
     this.image
   });
+
+  @override
+  String toString() {
+    return 'name: $name, password: $password, email: $email, data: $dataNascimento, file: $image';
+  }
 }

@@ -1,27 +1,35 @@
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:perfil/entity/user/controller/PerfilController.dart';
 import 'package:perfil/ui/CustomWidgets/cards.dart';
 
 class Perfil extends StatefulWidget {
   final String name;
   final String email;
-  const Perfil({super.key, required this.name, required this.email}) : super();
+  const Perfil({super.key, required this.name, required this.email})
+      : super();
 
   @override
   State<Perfil> createState() => _PerfilState();
 }
 
 class _PerfilState extends State<Perfil> {
+  late String _userImage;
+
+  @override
+  void initState() {
+    super.initState();
+    _userImage = PerfilController.retornarFile(widget.name)!;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 6, 35, 44),
       body: Container(
         decoration: const BoxDecoration(
-          color: Color.fromARGB(
-              255, 6, 35, 44), 
+          color: Color.fromARGB(255, 6, 35, 44),
         ),
         child: ListView(
           scrollDirection: Axis.vertical,
@@ -37,14 +45,12 @@ class _PerfilState extends State<Perfil> {
                       child: Container(
                         width: 120,
                         height: 120,
-                        child: ClipOval(
-                          child:
-                              Image.asset('perfilFoto.jpg', fit: BoxFit.cover),
+                        child: CircleAvatar(
+                          backgroundImage:  NetworkImage(_userImage)
                         ),
                       ),
                     ),
-                    const SizedBox(
-                        width: 20), 
+                    const SizedBox(width: 20),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -61,8 +67,7 @@ class _PerfilState extends State<Perfil> {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                        width: 20), 
+                    const SizedBox(width: 20),
                     const Icon(
                       Icons.settings,
                       color: Colors.white,

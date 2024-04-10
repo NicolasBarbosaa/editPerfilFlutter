@@ -10,6 +10,8 @@ import 'package:perfil/ui/pages/telaInicio.dart';
 class CadastroController {
   UserDataBase userDB = UserDataBase();
 
+  
+
   static addUser(UserModel user) async {
     UserDataBase.users.add(user);
     print(UserDataBase.users);
